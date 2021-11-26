@@ -77,6 +77,12 @@ main {
   color: #333333;
 }
 
+.alert-text.alert-text {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #fa6247;
+}
+
 .incomplete-area ul li {
   padding: 24px 0;
   border-bottom: 1px solid #eeeeee;
