@@ -14,6 +14,12 @@ export const App = () => {
 
   const [completeTodos, setCompleteTodos] = useState([]);
 
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const [editValue, setEditValue] = useState("");
+
+  const [editIndex, setEditIndex] = useState(0);
+
   const onChangeTodoText = (event) => setTodotext(event.target.value);
 
   const onClickAddTodo = () => {
@@ -47,6 +53,12 @@ export const App = () => {
     setIncompleteTodos(newIncompleteTodos);
   };
 
+  const onClickEditTodo = (index) => {
+    setShowEditModal(true);
+    setEditValue(incompleteTodos[index]);
+    setEditIndex(index);
+  };
+
   return (
     <>
       <InputTodo
@@ -60,6 +72,15 @@ export const App = () => {
           todos={incompleteTodos}
           onClickCompleteTodo={onClickCompleteTodo}
           onClickDeleteTodo={onClickDeleteTodo}
+          onClickEditTodo={onClickEditTodo}
+          editValue={editValue}
+          setEditValue={setEditValue}
+          showEditModal={showEditModal}
+          setShowEditModal={setShowEditModal}
+          todoText={todoText}
+          setTodotext={setTodotext}
+          editIndex={editIndex}
+          setIncompleteTodos={setIncompleteTodos}
         />
         <CompleteTodos
           todos={completeTodos}

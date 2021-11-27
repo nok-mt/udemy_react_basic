@@ -4,12 +4,16 @@ export const CompleteTodos = (props) => {
   const { todos, onClickBackTodo } = props;
   return (
     <div className="complete-area">
-      <p>完了したToDO</p>
+      <p>完了</p>
       <ul>
         {todos.map((todo, index) => {
           return (
             <li key={todo}>
-              <button onClick={() => onClickBackTodo(index)}>✓</button>
+              <input
+                type="checkbox"
+                onClick={() => onClickBackTodo(index)}
+                checked
+              />
               <p>{todo}</p>
             </li>
           );
