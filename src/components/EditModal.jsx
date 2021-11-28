@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 import styled from "styled-components";
 
 export const EditModal = (props) => {
@@ -11,18 +12,31 @@ export const EditModal = (props) => {
     setIncompleteTodos,
   } = props;
 
+  const [errorText, setErrorText] = useState(false);
+
   const onChangeEditValue = (event) => setValue(event.target.value);
 
   const editIncompleteTodos = () => {
-    const newIncompleteTodos = [...todos];
-    newIncompleteTodos[editIndex] = value;
-    setIncompleteTodos(newIncompleteTodos);
-    setShowEditModal(false);
+    if (value !== "") {
+      const newIncompleteTodos = [...todos];
+      newIncompleteTodos[editIndex] = value;
+      setIncompleteTodos(newIncompleteTodos);
+      setShowEditModal(false);
+    } else {
+      setErrorText(true);
+    }
   };
 
   return (
     <Wrapper>
       <Box>
+        {errorText && (
+          <p
+            style={{ color: "#fa6247", fontSize: "14px", textAlign: "center" }}
+          >
+            名前を入力してください
+          </p>
+        )}
         <ChangeName>
           <input type="text" value={value} onChange={onChangeEditValue} />
           <button onClick={editIncompleteTodos}>決定</button>

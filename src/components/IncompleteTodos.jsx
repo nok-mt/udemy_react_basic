@@ -17,9 +17,6 @@ export const IncompleteTodos = (props) => {
 
   return (
     <div className="incomplete-area">
-      {todos.length >= 5 && (
-        <p className="alert-text">登録できるToDoは5個までです。</p>
-      )}
       <p>やること</p>
       <ul>
         {todos.map((todo, index) => {
